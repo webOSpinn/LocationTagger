@@ -1,0 +1,11 @@
+{
+	"id": "com.spinn.locationtagger",
+	"package_format_version": 2,
+	"loc_name": "Location Tagger",
+	"version": "1.0.0",
+	"icon": "icon64.png",
+	"miniicon": "icon32.png",
+	"vendor": "Spinn",
+	"app": "com.spinn.locationtagger",
+	"services": ["com.spinn.locationtagger.fileio.service"]
+}

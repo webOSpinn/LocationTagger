@@ -1,0 +1,20 @@
+{
+	"id": "com.spinn.locationtagger",
+	"version": "1.0.0",
+	"vendor": "Spinn",
+	"type": "web",
+	"main": "index.html",
+	"title": "Location Tagger",
+	"miniicon": "miniIcon.png",
+	"icon": "icon.png",
+	"splashicon": "splashIcon.png",
+	"visible": true,
+	"uiRevision": 2,
+	"vendorurl":"https://github.com/webOSpinn",
+	"aboutDialogInfo": {
+		"email": "spinn@outlook.com",
+		"emailSubject": "Location Tagger",
+		"description": "This app is designed to help you categorize and save points of interest (i.e. favorite fishing spot) so you can easily find them in the future.",
+		"copyright": "&copy; Copyright 2012 Spinn"
+	}
+}

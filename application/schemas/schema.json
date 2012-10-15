@@ -1,0 +1,112 @@
+[
+	{
+		"table": "locations",
+		"columns": [
+			{ "column": "rowID", "type": "INTEGER", "constraints": ["PRIMARY KEY"] },
+			{ "column": "name", "type": "TEXT" },
+			{ "column": "category", "type": "TEXT", "constraints": ["DEFAULT 'Unknown'"] },
+			{ "column": "description", "type": "TEXT" },
+			{ "column": "altitude", "type": "DOUBLE", "constraints": ["DEFAULT -1"] },
+			{ "column": "heading", "type": "DOUBLE", "constraints": ["DEFAULT -1"] },
+			{ "column": "horizAccuracy", "type": "DOUBLE", "constraints": ["DEFAULT -1"] },
+			{ "column": "latitude", "type": "DOUBLE" },
+			{ "column": "longitude", "type": "DOUBLE" },
+			{ "column": "timestamp", "type": "DOUBLE", "constraints": ["DEFAULT CURRENT_TIMESTAMP"] },
+			{ "column": "velocity", "type": "DOUBLE", "constraints": ["DEFAULT -1"] },
+			{ "column": "vertAccuracy", "type": "DOUBLE", "constraints": ["DEFAULT -1"] }
+		],
+		"data": [
+			{
+				"name": "Hotel",
+				"category": "Vacation",
+				"description": "Our room at the calypso hotel.",
+				"altitude": "-1",
+				"heading": "-1",
+				"horizAccuracy": "-1",
+				"latitude": "28.340067",
+				"longitude": "-81.574337",
+				"timestamp": "1280005200000",
+				"velocity": "-1",
+				"vertAccuracy": "-1"
+			},
+			{
+				"name": "Sea World",
+				"category": "Vacation",
+				"description": "",
+				"altitude": "-1",
+				"heading": "-1",
+				"horizAccuracy": "-1",
+				"latitude": "28.40952",
+				"longitude": "-81.46225",
+				"timestamp": "1280066400000",
+				"velocity": "-1",
+				"vertAccuracy": "-1"
+			},
+			{
+				"name": "Epcot",
+				"category": "Vacation",
+				"description": "",
+				"altitude": "-1",
+				"heading": "-1",
+				"horizAccuracy": "-1",
+				"latitude": "28.375382",
+				"longitude": "-81.549389",
+				"timestamp": "1280152800000",
+				"velocity": "-1",
+				"vertAccuracy": "-1"
+			},
+			{
+				"name": "The Magic Kingdom",
+				"category": "Vacation",
+				"description": "",
+				"altitude": "-1",
+				"heading": "-1",
+				"horizAccuracy": "-1",
+				"latitude": "28.416352",
+				"longitude": "-81.581125",
+				"timestamp": "1280239200000",
+				"velocity": "-1",
+				"vertAccuracy": "-1"
+			},
+			{
+				"name": "Disney's Hollywood Studios",
+				"category": "Vacation",
+				"description": "",
+				"altitude": "-1",
+				"heading": "-1",
+				"horizAccuracy": "-1",
+				"latitude": "28.357473",
+				"longitude": "-81.558938",
+				"timestamp": "1280325600000",
+				"velocity": "-1",
+				"vertAccuracy": "-1"
+			},
+			{
+				"name": "Kennedy Space Center Visitor's Complex",
+				"category": "Vacation",
+				"description": "",
+				"altitude": "-1",
+				"heading": "-1",
+				"horizAccuracy": "-1",
+				"latitude": "28.524591",
+				"longitude": "-80.679291",
+				"timestamp": "1280412000000",
+				"velocity": "-1",
+				"vertAccuracy": "-1"
+			},
+			{
+				"name": "Ruby Falls",
+				"category": "Vacation",
+				"description": "",
+				"altitude": "-1",
+				"heading": "-1",
+				"horizAccuracy": "-1",
+				"latitude": "35.019167",
+				"longitude": "-85.339444",
+				"timestamp": "1280585580000",
+				"velocity": "-1",
+				"vertAccuracy": "-1"
+			}
+		]
+	}
+]

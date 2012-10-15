@@ -164,3 +164,7 @@ pip-log.txt
 
 # webOS Application Package
 *.ipk
+
+# Ignore My Temp Files
+_TODO.txt
+_Websites.txt

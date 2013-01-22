@@ -25,13 +25,11 @@ enyo.kind({
 			refreshCategories: enyo.bind(this, this.refreshCategories),
 			onLocationQuerySuccess: enyo.bind(this, this.onLocationQuerySuccess),
 			onCategoriesQuerySuccess: enyo.bind(this, this.onCategoriesQuerySuccess),
-			addDocumentFinish: enyo.bind(this, this.addDocumentFinish),
 			databaseError: enyo.bind(this, this.databaseError)
 		}
 	},
 	create: function () {
 		this.inherited(arguments);
-		var a = (this.$.db.getVersion() ? parseInt(this.$.db.getVersion().replace(/\./g, "")) : 10);
 		this.currentVersion = "1.0";
 		if (!localStorage["LocationTagger.firstRun"] && !this.runningQuery) {
 			this.populateDatabase()
@@ -56,7 +54,7 @@ enyo.kind({
 			this.error("Database error (" + er.code + "): " + er.message);
 			this.populateDatabase()
 		} else {
-			this.error("Database error (" + er.code + "): " + e.message)
+			this.error("Database error (" + er.code + "): " + er.message)
 		}
 	},
 	importFromJSON: function (data) {

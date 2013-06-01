@@ -222,7 +222,7 @@ enyo.kind({
 				this.$.catItem.setCount(r.LocCount);
 				//If the item being rendered is what was selected before, reselect it
 				if(inSender.getSelectedID() == r.category) {
-					inSender.setItemToSelectOnRender(inIndex, r.category);
+					inSender.setItemToSelect(inIndex, r.category);
 				}
 				return true;
 			}
@@ -258,7 +258,7 @@ enyo.kind({
 				this.$.locName.setContent(r.name);
 				//If the item being rendered is what was selected before, reselect it
 				if(inSender.getSelectedID() == r.rowID) {
-					inSender.setItemToSelectOnRender(inIndex, r.rowID);
+					inSender.setItemToSelect(inIndex, r.rowID);
 				}
 				return true;
 			}

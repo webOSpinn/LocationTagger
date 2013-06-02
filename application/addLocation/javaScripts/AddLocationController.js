@@ -8,7 +8,7 @@ enyo.kind({
 		onSaveLocation: ""
 	},
 	components: [
-		{kind: "Spinn.Utils" name: "Utils"},
+		{kind: "Spinn.Utils", name: "Utils"},
 		{
 			name      : "getPos",
 			kind      : "PalmService",

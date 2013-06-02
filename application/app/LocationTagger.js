@@ -2,8 +2,8 @@ enyo.kind({
 	name: "LocationTagger",
 	kind: enyo.VFlexBox,
 	components: [
-		{kind: "Spinn.Utils" name: "Utils"},
-		{kind: "Spinn.PhoneUtils" name: "PhoneUtils"},
+		{kind: "Spinn.Utils", name: "Utils"},
+		{kind: "Spinn.PhoneUtils", name: "PhoneUtils"},
 		{kind: "LocTaggerUtils"},
 		{
 			name: "model",

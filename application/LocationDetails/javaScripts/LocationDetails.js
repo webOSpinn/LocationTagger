@@ -2,7 +2,7 @@ enyo.kind({
 	name: "LocationDetails",
 	kind: enyo.VFlexBox,
 	components: [
-		{kind: "Spinn.Utils" name: "Utils"},
+		{kind: "Spinn.Utils", name: "Utils"},
 		{kind: "LocTaggerUtils"},
 		{kind: "RowGroup", caption: "Name:", components: [
 			{name: "name", kind: "Input", hint:"Tap Here To Enter a Name", flex: 1}

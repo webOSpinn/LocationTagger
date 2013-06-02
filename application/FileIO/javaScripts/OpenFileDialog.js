@@ -13,7 +13,7 @@ enyo.kind({
 		files: []
 	},
 	components: [
-		{kind: "Spinn.Utils" name: "Utils"},
+		{kind: "Spinn.Utils", name: "Utils"},
 		{kind: "Group", caption: "", flex: 1, contentFit: true, layoutKind: "VFlexLayout", components: [
 			{kind: "Scroller", name:"fileListScroller", flex: 1, autoHorizontal: false, horizontal: false,
 				components: [

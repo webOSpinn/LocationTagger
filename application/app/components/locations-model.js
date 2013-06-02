@@ -2,7 +2,7 @@ enyo.kind({
 	name: "locationTagger.LocationsModel",
 	kind: enyo.Component,
 	components: [
-		{kind: "Spinn.Utils" name: "Utils"},
+		{kind: "Spinn.Utils", name: "Utils"},
 		{
 			name: "db",
 			kind: "onecrayon.Database",

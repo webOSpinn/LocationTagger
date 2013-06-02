@@ -10,6 +10,7 @@ enyo.kind({
 		onUpdateCoordinates: ""
 	},
 	components: [
+		{kind: "LocTaggerUtils"},
 		{kind: "Scroller", name:"theScroller", flex: 1, autoHorizontal: false, horizontal: false,
 			components: [
 				{kind: enyo.HFlexBox,
@@ -74,7 +75,7 @@ enyo.kind({
 		this.$.btnUpdate.stopAnimation();
 		
 		this.$.latLon.setValue(gps.latitude +", " + gps.longitude);
-		this.$.details.setContent(LocTaggerUtils.gpsToRichTXT(gps));
+		this.$.details.setContent(this.$.LocTaggerUtils.gpsToRichTXT(gps));
 	},
 	setError: function(err) {
 		this.$.btnUpdate.stopAnimation();

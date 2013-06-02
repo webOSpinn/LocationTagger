@@ -13,6 +13,7 @@ enyo.kind({
 		files: []
 	},
 	components: [
+		{kind: "Spinn.Utils" name: "Utils"},
 		{kind: "Group", caption: "", flex: 1, contentFit: true, layoutKind: "VFlexLayout", components: [
 			{kind: "Scroller", name:"fileListScroller", flex: 1, autoHorizontal: false, horizontal: false,
 				components: [
@@ -38,7 +39,7 @@ enyo.kind({
 		this.$.fileList.render();
 	},
 	getFileItem: function(inSender, inIndex) {
-		if(enyo.exists(this.getFiles())) {
+		if(this.$.Utils.exists(this.getFiles())) {
 			var r = this.getFiles()[inIndex];
 			if (r) {
 				this.$.fileItem.setContent(r);
@@ -48,7 +49,7 @@ enyo.kind({
 	},
 	fileListItemClick: function(inSender, inEvent) {
 		//Only trigger if user has clicked on an item
-		if(enyo.exists(inEvent.rowIndex)) {
+		if(this.$.Utils.exists(inEvent.rowIndex)) {
 			var r = this.getFiles()[inEvent.rowIndex];
 			if (r) {
 				this.doSubmit({ filename: r });

@@ -1,13 +1,16 @@
 enyo.kind({
 	name: "locationTagger.LocationsModel",
 	kind: enyo.Component,
-	components: [{
-		name: "db",
-		kind: "onecrayon.Database",
-		database: "ext:" + (enyo.g11n.getPlatform() === "device" ? enyo.fetchAppId() : "com.spinn.locationtagger"),
-		version: "",
-		debug: (enyo.exists(enyo.fetchFrameworkConfig().debuggingEnabled) ? enyo.fetchFrameworkConfig().debuggingEnabled : false)
-	}],
+	components: [
+		{kind: "Spinn.Utils" name: "Utils"},
+		{
+			name: "db",
+			kind: "onecrayon.Database",
+			database: "ext:" + (enyo.g11n.getPlatform() === "device" ? enyo.fetchAppId() : "com.spinn.locationtagger"),
+			version: "",
+			debug: (this.$.Utils.exists(enyo.fetchFrameworkConfig().debuggingEnabled) ? enyo.fetchFrameworkConfig().debuggingEnabled : false)
+		}
+	],
 	constructor: function () {
 		this.inherited(arguments);
 		this.currentCategory = null;
@@ -70,14 +73,14 @@ enyo.kind({
 	},
 	refreshItems: function () {
 		//Only refresh both if there is a category selected
-		if(enyo.exists(this.currentCategory)) {
+		if(this.$.Utils.exists(this.currentCategory)) {
 			this.refreshBoth = true;
 		}
 		this.refreshCategories();
 	},
 	/*Start locations code*/
 	getAllLocations: function (callback) {
-		if (enyo.exists(callback) && !this.runningQuery) {
+		if (this.$.Utils.exists(callback) && !this.runningQuery) {
 			try {
 				var query = this.getBaseSelect();
 				this.runningQuery = true;
@@ -91,12 +94,12 @@ enyo.kind({
 	},
 	getAllLocationsSuccess: function(callback, data) {
 		this.runningQuery = false;
-		if (enyo.exists(callback)) {
+		if (this.$.Utils.exists(callback)) {
 			callback(data);
 		}
 	},
 	refreshLocations: function () {
-		if (enyo.exists(this.locationsUpdatedCallback) && !this.runningQuery) {
+		if (this.$.Utils.exists(this.locationsUpdatedCallback) && !this.runningQuery) {
 			try {
 				var query = this.getLocationsSelect();
 				this.runningQuery = true;
@@ -214,7 +217,7 @@ enyo.kind({
 		if (id === null) {
 			id = this.$.db.lastInsertID()
 		}
-		if (enyo.exists(callback)) {
+		if (this.$.Utils.exists(callback)) {
 			callback(id)
 		}
 	},
@@ -228,7 +231,7 @@ enyo.kind({
 	},
 	_deleteLocationFinish: function (callBack) {
 		this.refreshItems();
-		if (enyo.exists(callBack)) {
+		if (this.$.Utils.exists(callBack)) {
 			callBack()
 		}
 	}

@@ -2,6 +2,8 @@ enyo.kind({
 	name: "LocationDetails",
 	kind: enyo.VFlexBox,
 	components: [
+		{kind: "Spinn.Utils" name: "Utils"},
+		{kind: "LocTaggerUtils"},
 		{kind: "RowGroup", caption: "Name:", components: [
 			{name: "name", kind: "Input", hint:"Tap Here To Enter a Name", flex: 1}
 		]},
@@ -24,7 +26,7 @@ enyo.kind({
 	},
 	updateLocation: function() {
 		//Make sure there is an object to update
-		if(enyo.exists(this.location)) {
+		if(this.$.Utils.exists(this.location)) {
 			//Only update if at least one of the values have been updated
 			if((this.$.name.getValue() != this.location.name) 
 				|| (this.$.category.getValue() != this.location.category) 
@@ -42,8 +44,8 @@ enyo.kind({
 	},
 	setLocation: function (a) {
 		var update = true;
-		if(enyo.exists(this.location)) {
-			if(enyo.exists(a)){
+		if(this.$.Utils.exists(this.location)) {
+			if(this.$.Utils.exists(a)){
 				if(a.rowID == this.location.rowID) {
 					//Only update if we are setting the location to a new one
 					update = false;
@@ -61,11 +63,11 @@ enyo.kind({
 		return this.location;
 	},
 	locationChanged: function() {
-		if(enyo.exists(this.location)) {
+		if(this.$.Utils.exists(this.location)) {
 			this.$.name.setValue(this.location.name);
 			this.$.category.setValue(this.location.category);
 			this.$.description.setValue(this.location.description);
-			this.$.details.setContent(LocTaggerUtils.gpsToRichTXT(this.location));
+			this.$.details.setContent(this.$.LocTaggerUtils.gpsToRichTXT(this.location));
 		}
 		else
 		{

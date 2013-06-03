@@ -1,5 +1,6 @@
 enyo.kind({
 	name: "LocTaggerUtils",
+	kind: enyo.Component,
 	gpsToRichTXT: function (a) {
 		return ("<b>Altitude:</b> " + this.metersToFeet(a.altitude).toFixed(2) + " feet / " + a.altitude + " meters<br/>"
 				+ "<b>Heading:</b> " + a.heading + "<br/>"

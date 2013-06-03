@@ -3,7 +3,7 @@ enyo.kind({
 	kind: enyo.VFlexBox,
 	components: [
 		{kind: "Spinn.Utils", name: "Utils"},
-		{kind: "LocTaggerUtils"},
+		{kind: "LocTaggerUtils", name: "locTaggerUtils"},
 		{kind: "RowGroup", caption: "Name:", components: [
 			{name: "name", kind: "Input", hint:"Tap Here To Enter a Name", flex: 1}
 		]},
@@ -67,7 +67,7 @@ enyo.kind({
 			this.$.name.setValue(this.location.name);
 			this.$.category.setValue(this.location.category);
 			this.$.description.setValue(this.location.description);
-			this.$.details.setContent(this.$.LocTaggerUtils.gpsToRichTXT(this.location));
+			this.$.details.setContent(this.$.locTaggerUtils.gpsToRichTXT(this.location));
 		}
 		else
 		{

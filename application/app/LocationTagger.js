@@ -4,7 +4,7 @@ enyo.kind({
 	components: [
 		{kind: "Spinn.Utils", name: "Utils"},
 		{kind: "Spinn.PhoneUtils", name: "PhoneUtils"},
-		{kind: "LocTaggerUtils"},
+		{kind: "LocTaggerUtils", name: "locTaggerUtils"},
 		{
 			name: "model",
 			kind: "locationTagger.LocationsModel"
@@ -107,7 +107,7 @@ enyo.kind({
 		this.inherited(arguments);
 		var b = enyo.getCookie("LocationTagger.installed");
 		var c = enyo.fetchDeviceInfo();
-		if (!b || (this.$.Utils.exists(c) && b !== c.serialNumber)) {
+		if (!b || (((typeof c !== "undefined") && (c !== NaN) && (c !== null)) && b !== c.serialNumber)) {
 			localStorage.removeItem("LocationTagger.version");
 			localStorage.removeItem("LocationTagger.firstRun");
 			if (enyo.fetchDeviceInfo()) {
@@ -184,14 +184,14 @@ enyo.kind({
 	locationReport: function(gpsPoints) {
 		var content = "";
 		for (i = 0; i < gpsPoints.length; i++)
-		{ content = content + this.$.LocTaggerUtils.gpsToReport(gpsPoints[i]); }
+		{ content = content + this.$.locTaggerUtils.gpsToReport(gpsPoints[i]); }
 		this.$.fileIO.saveFile(content);
 	},
 	exportLocations: function(gpsPoints) {
 		var content = "[\n";
 		var temp = [];
 		for (i = 0; i < gpsPoints.length; i++)
-		{ temp.push(this.$.LocTaggerUtils.gpsToJSONForExport(gpsPoints[i])); }
+		{ temp.push(this.$.locTaggerUtils.gpsToJSONForExport(gpsPoints[i])); }
 		
 		content = content + temp.join(",\n") + "\n]";
 		

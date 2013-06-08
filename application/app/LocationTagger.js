@@ -43,7 +43,7 @@ enyo.kind({
 						components: [
 							{name: "categoryList", kind: "Spinn.SelectableVirtualRepeater", onSetupRow: "getCategoryItem", onclick: "categoryListItemClick",
 								components: [
-									{kind: "Spinn.CountableItem", name: "catItem"}
+									{kind: "Spinn.CountableIconItem", name: "catItem", showIcon: false}
 								]
 							}
 						]

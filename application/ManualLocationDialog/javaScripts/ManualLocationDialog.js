@@ -9,7 +9,6 @@ enyo.kind({
 		onCancel: ""
 	},
 	components: [
-		{kind: "Spinn.Utils", name: "Utils"},
 		{kind: "Spinn.InfoDialog", name:"info", onOk:"oKHandler", caption:"", message:""},
 		{kind: "Scroller", name:"theScroller", flex: 1, autoHorizontal: false, horizontal: false,
 			components: [
@@ -103,7 +102,7 @@ enyo.kind({
 		if(temp == "") {
 			this.handleInvalidInput(this.$.latitude, "Please enter the latitude.");
 			return false;
-		} else if(this.$.Utils.isFloat(temp) == false) {
+		} else if(Spinn.Utils.isFloat(temp) == false) {
 			this.handleInvalidInput(this.$.latitude, "Latitude must be a number.");
 			return false;
 		} else if (!(temp >= -90 && temp <= 90)) {
@@ -116,7 +115,7 @@ enyo.kind({
 		if(temp == "") {
 			this.handleInvalidInput(this.$.longitude, "Please enter the longitude.");
 			return false;
-		} else if(this.$.Utils.isFloat(temp) == false) {
+		} else if(Spinn.Utils.isFloat(temp) == false) {
 			this.handleInvalidInput(this.$.longitude, "Longitude must be a number.");
 			return false;
 		} else if (!(temp >= -180 && temp <= 180)) {
@@ -128,7 +127,7 @@ enyo.kind({
 		temp = enyo.string.trim(this.$.altitude.getValue());
 		//Allow it to be blank
 		if(temp != "") {
-			if(this.$.Utils.isFloat(temp) == false) {
+			if(Spinn.Utils.isFloat(temp) == false) {
 				this.handleInvalidInput(this.$.altitude, "Altitude must be a number.");
 				return false;
 			}
@@ -138,7 +137,7 @@ enyo.kind({
 		temp = enyo.string.trim(this.$.heading.getValue());
 		//Allow to be blank
 		if(temp != "") {
-			if(this.$.Utils.isFloat(temp) == false) {
+			if(Spinn.Utils.isFloat(temp) == false) {
 				this.handleInvalidInput(this.$.heading, "Heading must be a number.");
 				return false;
 			} else if (!(temp >= 0 && temp <= 360)) {
@@ -151,7 +150,7 @@ enyo.kind({
 		temp = enyo.string.trim(this.$.horizAccuracy.getValue());
 		//Allow to be blank
 		if(temp != "") {
-			if(this.$.Utils.isFloat(temp) == false) {
+			if(Spinn.Utils.isFloat(temp) == false) {
 				this.handleInvalidInput(this.$.horizAccuracy, "Horizontal accuracy must be a number.");
 				return false;
 			} else if(temp < 0) {
@@ -164,7 +163,7 @@ enyo.kind({
 		temp = enyo.string.trim(this.$.velocity.getValue());
 		//Allow to be blank
 		if(temp != "") {
-			if(this.$.Utils.isFloat(temp) == false) {
+			if(Spinn.Utils.isFloat(temp) == false) {
 				this.handleInvalidInput(this.$.velocity, "Velocity must be a number.");
 				return false;
 			} else if(temp < 0) {
@@ -177,7 +176,7 @@ enyo.kind({
 		temp = enyo.string.trim(this.$.vertAccuracy.getValue());
 		//Allow to be blank
 		if(temp != "") {
-			if(this.$.Utils.isFloat(temp) == false) {
+			if(Spinn.Utils.isFloat(temp) == false) {
 				this.handleInvalidInput(this.$.vertAccuracy, "Vertical accuracy must be a number.");
 				return false;
 			} else if(temp < 0) {
@@ -195,7 +194,7 @@ enyo.kind({
 		this.$.info.setMessage(message);
 	},
 	oKHandler: function (inSender, inEvent) {
-		if(this.$.Utils.exists(this.input)) {
+		if(Spinn.Utils.exists(this.input)) {
 			this.input.forceFocusEnableKeyboard();
 			this.input.forceSelect();
 		}

@@ -8,7 +8,6 @@ enyo.kind({
 		onSaveLocation: ""
 	},
 	components: [
-		{kind: "Spinn.Utils", name: "Utils"},
 		{
 			name      : "getPos",
 			kind      : "PalmService",
@@ -36,7 +35,7 @@ enyo.kind({
 		this.$.addLocDialog.openAtCenter();
 	},
 	saveHandler: function (inSender, inEvent) {
-		if(this.$.Utils.exists(this.gps)){
+		if(Spinn.Utils.exists(this.gps)){
 			//Only close the dialog if there is a GPS point
 			this.$.addLocDialog.close();
 			//Check gps and mostAccurateLock - use timestamp to determine if they are the same
@@ -57,7 +56,7 @@ enyo.kind({
 				this.save();
 			}
 		}
-		else if (this.$.Utils.exists(this.mostAccurateLock)) {
+		else if (Spinn.Utils.exists(this.mostAccurateLock)) {
 			//Current gps is in error but we have a most accurate lock
 			this.$.addLocDialog.close();
 			//console.log("Current point is in error.  Saving mostAccurateLock instead.");
@@ -98,7 +97,7 @@ enyo.kind({
 		}
 		
 		//Make sure we always keep the most accurate location
-		if(this.$.Utils.exists(this.mostAccurateLock)){
+		if(Spinn.Utils.exists(this.mostAccurateLock)){
 			//If the new location is at least as accurate update the most accurate
 			if(this.gps.horizAccuracy <= this.mostAccurateLock.horizAccuracy) {
 				this.mostAccurateLock = this.gps;

@@ -2,13 +2,12 @@ enyo.kind({
 	name: "locationTagger.LocationsModel",
 	kind: enyo.Component,
 	components: [
-		{kind: "Spinn.Utils", name: "Utils"},
 		{
 			name: "db",
 			kind: "onecrayon.Database",
 			database: "ext:" + (enyo.g11n.getPlatform() === "device" ? enyo.fetchAppId() : "com.spinn.locationtagger"),
 			version: "",
-			debug: (((typeof enyo.fetchFrameworkConfig().debuggingEnabled !== "undefined") && (enyo.fetchFrameworkConfig().debuggingEnabled !== null)) ? enyo.fetchFrameworkConfig().debuggingEnabled : false)
+			debug: (Spinn.Utils.exists(enyo.fetchFrameworkConfig().debuggingEnabled) ? enyo.fetchFrameworkConfig().debuggingEnabled : false)
 		}
 	],
 	constructor: function () {
@@ -73,14 +72,14 @@ enyo.kind({
 	},
 	refreshItems: function () {
 		//Only refresh both if there is a category selected
-		if(this.$.Utils.exists(this.currentCategory)) {
+		if(Spinn.Utils.exists(this.currentCategory)) {
 			this.refreshBoth = true;
 		}
 		this.refreshCategories();
 	},
 	/*Start locations code*/
 	getAllLocations: function (callback) {
-		if (this.$.Utils.exists(callback) && !this.runningQuery) {
+		if (Spinn.Utils.exists(callback) && !this.runningQuery) {
 			try {
 				var query = this.getBaseSelect();
 				this.runningQuery = true;
@@ -94,12 +93,12 @@ enyo.kind({
 	},
 	getAllLocationsSuccess: function(callback, data) {
 		this.runningQuery = false;
-		if (this.$.Utils.exists(callback)) {
+		if (Spinn.Utils.exists(callback)) {
 			callback(data);
 		}
 	},
 	refreshLocations: function () {
-		if (this.$.Utils.exists(this.locationsUpdatedCallback) && !this.runningQuery) {
+		if (Spinn.Utils.exists(this.locationsUpdatedCallback) && !this.runningQuery) {
 			try {
 				var query = this.getLocationsSelect();
 				this.runningQuery = true;
@@ -217,7 +216,7 @@ enyo.kind({
 		if (id === null) {
 			id = this.$.db.lastInsertID()
 		}
-		if (this.$.Utils.exists(callback)) {
+		if (Spinn.Utils.exists(callback)) {
 			callback(id)
 		}
 	},
@@ -231,7 +230,7 @@ enyo.kind({
 	},
 	_deleteLocationFinish: function (callBack) {
 		this.refreshItems();
-		if (this.$.Utils.exists(callBack)) {
+		if (Spinn.Utils.exists(callBack)) {
 			callBack()
 		}
 	}

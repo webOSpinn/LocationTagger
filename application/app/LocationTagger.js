@@ -2,8 +2,6 @@ enyo.kind({
 	name: "LocationTagger",
 	kind: enyo.VFlexBox,
 	components: [
-		{kind: "Spinn.Utils", name: "Utils"},
-		{kind: "Spinn.PhoneUtils", name: "PhoneUtils"},
 		{kind: "LocTaggerUtils", name: "locTaggerUtils"},
 		{
 			name: "model",
@@ -107,7 +105,7 @@ enyo.kind({
 		this.inherited(arguments);
 		var b = enyo.getCookie("LocationTagger.installed");
 		var c = enyo.fetchDeviceInfo();
-		if (!b || (((typeof c !== "undefined") && (c !== NaN) && (c !== null)) && b !== c.serialNumber)) {
+		if (!b || (Spinn.Utils.exists(c) && b !== c.serialNumber)) {
 			localStorage.removeItem("LocationTagger.version");
 			localStorage.removeItem("LocationTagger.firstRun");
 			if (enyo.fetchDeviceInfo()) {
@@ -132,7 +130,7 @@ enyo.kind({
 	},
 	loaded: function (inSender) {
 		//When the application is loaded we need to check to see if it is a phone
-		if(this.$.PhoneUtils.isPhone())
+		if(Spinn.PhoneUtils.isPhone())
 		{ this.addClass("isPhone"); }
 	},
 	deactivated: function (inSender) {
@@ -154,7 +152,7 @@ enyo.kind({
 	btnMap_Click: function(inSender) {
 		var viewedLocation = this.$.locDetails.getLocation();
 		//Only show the map if the user is currently viewing a location
-		if(this.$.Utils.exists(viewedLocation)) {
+		if(Spinn.Utils.exists(viewedLocation)) {
 			this.$.openApp.call({
 				"id": "com.palm.app.maps", 
 				"params": {
@@ -233,7 +231,7 @@ enyo.kind({
 	},
 	categoryListItemClick: function(inSender, inEvent) {
 		//Only trigger if user has clicked on an item
-		if(this.$.Utils.exists(inEvent.rowIndex)) {
+		if(Spinn.Utils.exists(inEvent.rowIndex)) {
 			//Only do selection if the user has selected a different category
 			if(inSender.getSelectedIndex() != inEvent.rowIndex) {
 				var category = this.$.model.currentCategories[inEvent.rowIndex];
@@ -250,7 +248,7 @@ enyo.kind({
 				this.$.locationList.clearSelection();
 			}
 			//Always go to the location pane on a phone
-			if(this.$.PhoneUtils.isPhone())
+			if(Spinn.PhoneUtils.isPhone())
 			{ this.$.slidingPane.selectView(this.$.locationPane); }
 		}
 	},
@@ -269,7 +267,7 @@ enyo.kind({
 	},
 	locationListItemClick: function(inSender, inEvent) {
 		//Only trigger if user has clicked on an item
-		if(this.$.Utils.exists(inEvent.rowIndex)) {
+		if(Spinn.Utils.exists(inEvent.rowIndex)) {
 			//Only do selection if the user has selected a different location
 			if(inSender.getSelectedIndex() != inEvent.rowIndex) {
 				var loc = this.$.model.currentLocations[inEvent.rowIndex]
@@ -282,7 +280,7 @@ enyo.kind({
 			}
 			
 			//Always go to the location details pane on a phone
-			if(this.$.PhoneUtils.isPhone())
+			if(Spinn.PhoneUtils.isPhone())
 			{ this.$.slidingPane.selectView(this.$.locationDetailPane); }
 		}
 	},
@@ -290,7 +288,7 @@ enyo.kind({
 		var viewedLocation = this.$.locDetails.getLocation();
 		
 		//If deleting the selected location clear the details pane - if it is displaying something
-		if(this.$.Utils.exists(viewedLocation)) {
+		if(Spinn.Utils.exists(viewedLocation)) {
 			if(viewedLocation.rowID == this.$.model.currentLocations[inIndex].rowID) {
 				this.$.locDetails.setLocation(null);
 				//clear the selected location item in the list - as we have deleted the selected location

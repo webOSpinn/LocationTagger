@@ -1,7 +1,6 @@
 enyo.kind({
 	name: "OpenFileDialog",
 	kind: enyo.ModalDialog,
-	className: "enyo-popup enyo-modaldialog openFileDialog",
 	caption: "Open File",
 	layoutKind: "VFlexLayout",
 	contentHeight:"98%", height:"90%", style: "max-height: 530px;",
@@ -26,6 +25,10 @@ enyo.kind({
 		]},
 		{kind: "Button",className: "enyo-button-negative", caption: "Cancel", onclick: "resetHandler"}
 	],
+	constructor: function () {
+		this.inherited(arguments);
+		this.addClass("openFileDialog");
+	},
 	create: function() {
 		this.inherited(arguments);
 	},

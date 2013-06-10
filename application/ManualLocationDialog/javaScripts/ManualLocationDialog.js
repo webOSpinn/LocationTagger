@@ -1,7 +1,6 @@
 enyo.kind({
 	name: "ManualLocationDialog",
 	kind: enyo.ModalDialog,
-	className: "enyo-popup enyo-modaldialog manualLocationDialog",
 	layoutKind: "VFlexLayout",
 	contentHeight:"100%", height:"90%", style: "max-height: 530px;",
 	events: {
@@ -49,6 +48,7 @@ enyo.kind({
 	],
 	constructor: function () {
 		this.inherited(arguments);
+		this.addClass("manualLocationDialog");
 	},
 	openAtCenter: function () {
 		this.inherited(arguments);

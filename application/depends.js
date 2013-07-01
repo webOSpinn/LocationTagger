@@ -1,12 +1,12 @@
 enyo.depends(
 	"Spinn/depends.js",
-	"javaScripts/LocTaggerUtils.js",
+	"app/LocTaggerUtils.js",
 	"LocationDetails/depends.js",
 	"addLocation/depends.js",
 	"ManualLocationDialog/depends.js",
 	"FileIO/depends.js",
-	"app/components/database-enyo.js",
-	"app/components/locations-model.js",
 	"stylesheets/style.css",
+	"app/database-enyo.js",
+	"app/locations-model.js",
 	"app/LocationTagger.js"
 );

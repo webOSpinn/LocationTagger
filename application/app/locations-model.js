@@ -174,7 +174,7 @@ enyo.kind({
 			this.$.workQueue.lookForMoreWork();
 		}
 	},
-	getLocation: function (id, callback) {
+	/*getLocation: function (id, callback) {
 		this.$.workQueue.createWorkItem(enyo.bind(this, this._getLocation_worker, id, callback));
 	},
 	_getLocation_worker: function (id, callback) {
@@ -195,7 +195,7 @@ enyo.kind({
 		} finally {
 			this.$.workQueue.lookForMoreWork();
 		}
-	},
+	},*/
 	insertLocation: function (data, callback) {
 		this.$.workQueue.createWorkItem(enyo.bind(this, this._insertLocation_worker, data, callback));
 	},

@@ -147,7 +147,7 @@ enyo.kind({
 		this.$.manualLocationAdder.openAtCenter();
 	},
 	saveLocationHandler: function (inSender, inEvent) {
-		this.$.model.insertLocation(inEvent.gps, this.$.model.bound.refreshItems);
+		this.$.model.insertLocation(inEvent.gps);
 	},
 	btnMap_Click: function(inSender) {
 		var viewedLocation = this.$.locDetails.getLocation();

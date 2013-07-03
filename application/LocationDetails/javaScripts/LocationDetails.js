@@ -37,7 +37,7 @@ enyo.kind({
 					category: this.$.category.getValue(),
 					description: this.$.description.getValue()
 				}
-				enyo.application.model.updateLocation(this.location.rowID, loc, enyo.application.model.bound.refreshItems);
+				enyo.application.model.updateLocation(this.location.rowID, loc);
 			}
 		}
 	},

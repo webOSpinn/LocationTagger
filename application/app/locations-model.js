@@ -1,29 +1,16 @@
 enyo.kind({
 	name: "locationTagger.LocationsModel",
-	kind: enyo.Component,
+	kind: "Spinn.DataModel",
 	published: {
 		locationsUpdatedCallback: null,
 		categoriesUpdatedCallback: null
 	},
-	components: [
-		{
-			name: "db",
-			kind: "onecrayon.Database",
-			database: "ext:" + (enyo.g11n.getPlatform() === "device" ? enyo.fetchAppId() : "com.spinn.locationtagger"),
-			version: "",
-			debug: (Spinn.Utils.exists(enyo.fetchFrameworkConfig().debuggingEnabled) ? enyo.fetchFrameworkConfig().debuggingEnabled : false)
-		},
-		{ name:"workQueue", kind:"Spinn.WorkQueue"}
-	],
 	constructor: function () {
 		this.inherited(arguments);
 		this.currentCategory = null;
 		this.currentLocations = null;
 		this.currentCategories = null;
 		this.listColumns = ["rowID", "name", "category", "description", "altitude", "heading", "horizAccuracy", "latitude", "longitude", "timestamp", "velocity", "vertAccuracy"];
-		this.bound = {
-			_databaseError: enyo.bind(this, this._databaseError)
-		}
 		
 		this.refreshBoth = false;
 	},
@@ -32,18 +19,6 @@ enyo.kind({
 		this.currentVersion = "1.0";
 		if (!localStorage["LocationTagger.firstRun"]) {
 			this.$.workQueue.createWorkItem(enyo.bind(this, this._populateDatabase_worker));
-		}
-	},
-	_databaseError: function (er) {
-		try {
-			if (er.code === 1) {
-				this.error("Database error (" + er.code + "): " + er.message);
-				//this.populateDatabase();
-			} else {
-				this.error("Database error (" + er.code + "): " + er.message);
-			}
-		} finally {
-			this.$.workQueue.lookForMoreWork();
 		}
 	},
 	_populateDatabase_worker: function () {
@@ -59,7 +34,7 @@ enyo.kind({
 		//Don't call lookForMoreWork() because that will be handled by the success callback in _refreshItems_worker
 	},
 	importFromJSON: function (data) {
-		this.$.workQueue.createWorkItem(enyo.bind(this, this._importFromJSON_worker));
+		this.$.workQueue.createWorkItem(enyo.bind(this, this._importFromJSON_worker, data));
 	},
 	_importFromJSON_worker: function (data) {
 		var queries = [];
